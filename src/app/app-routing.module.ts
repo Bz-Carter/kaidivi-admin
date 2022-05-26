@@ -6,7 +6,7 @@ import { Error500Component } from './error-pages/error500/error500.component';
 
 const routes: Routes = [
   //Route Path For The Default Page:
-  { path: '', pathMatch: 'full', redirectTo: '' },
+  { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
   
   //Route Path For The Public Module:
   {
