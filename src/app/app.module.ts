@@ -8,13 +8,17 @@ import { SecureModule } from './secure/secure.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { Error404Component } from './error-pages/error404/error404.component';
+import { Error500Component } from './error-pages/error500/error500.component';
+import { ErrorMaintenanceComponent } from './error-pages/error-maintenance/error-maintenance.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    Error404Component,
+    Error500Component,
+    ErrorMaintenanceComponent
   ],
   imports: [
     BrowserModule,

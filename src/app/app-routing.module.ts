@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ErrorMaintenanceComponent } from './error-pages/error-maintenance/error-maintenance.component';
+import { Error404Component } from './error-pages/error404/error404.component';
+import { Error500Component } from './error-pages/error500/error500.component';
 
 const routes: Routes = [
   //Route Path For The Default Page:
@@ -19,8 +21,10 @@ const routes: Routes = [
   },
 
   //Route Path For The Error Page:
-  { path: 'error', component: PageNotFoundComponent },
-  { path: '**', pathMatch: 'full', redirectTo: 'error' },
+  { path: 'error-404', component: Error404Component },
+  { path: 'error-500', component: Error500Component },
+  { path: 'maintenance', component: ErrorMaintenanceComponent },
+  { path: '**', pathMatch: 'full', redirectTo: 'error-404' },
 ];
 
 @NgModule({
