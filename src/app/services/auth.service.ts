@@ -1,39 +1,42 @@
-import { HttpClient } from '@angular/common/http';
-import { EventEmitter, Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import {EventEmitter, Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   static authEmitter = new EventEmitter<boolean>();
+
   accessToken = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  //register request
   register(body: any) {
     return this.http.post(`${environment.api}/register`, body);
   }
-  
-  //login request
+
   login(body: any) {
-    return this.http.post(`${environment.api}/login`, body, {withCredentials: true});
+    return this.http.post(`${environment.api}/login`, body);
   }
 
-  
+  authenticatorLogin(body: any) {
+    return this.http.post(`${environment.api}/two-factor`, body, {withCredentials: true});
+  }
 
-  //user request
+  googleLogin(body: any) {
+    return this.http.post(`${environment.api}/google-auth`, body, {withCredentials: true});
+  }
+
   user() {
     return this.http.get(`${environment.api}/user`);
   }
 
-  //user request
   refresh() {
     return this.http.post(`${environment.api}/refresh`, {}, {withCredentials: true});
   }
 
-  //user request
   logout() {
     return this.http.post(`${environment.api}/logout`, {}, {withCredentials: true});
   }
