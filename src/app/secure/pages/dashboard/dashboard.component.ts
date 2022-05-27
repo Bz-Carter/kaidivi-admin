@@ -7,20 +7,23 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  message = '';
 
   constructor(
     private authService: AuthService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.authService.user().subscribe({
-      next: res => {
-        console.log(res)
+      next: (res: any) => {
+        this.message = `Hi ${res.first_name} ${res.last_name}`;
+        AuthService.authEmitter.emit(true);
       },
       error: err => {
-        console.log(err)
+        this.message = `You are not authenticated`;
+        AuthService.authEmitter.emit(false);
       }
     });
   }
-
 }
